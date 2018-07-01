@@ -1,0 +1,170 @@
+/** Container Styles */
+
+html, body {
+    background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+@page {
+    size: letter;
+    margin: 0.5in;
+}
+
+@media screen {
+    html, body {
+        text-align: center;
+    }
+
+    .container {
+        max-width: 6.5in;
+        display: inline-block;
+        text-align: left;
+        margin: 2rem;
+        padding: 0.5in 1in 1in 1in;
+    }
+}
+
+/** Element Styles */
+
+h1, h2, h3, h4, strong, .period {
+    font-weight: 500;
+}
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14pt;
+}
+
+h3, h4 {
+    font-size: 11pt;
+}
+
+h2 {
+    margin-top: 36pt;
+    margin-bottom: 16pt;
+}
+
+h3, h4 {
+    margin-bottom: 0.5rem;
+}
+
+ul, p {
+    margin-top: 0.5rem;
+}
+
+h2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+h2:before, h2:after {
+    background-color: #970800;
+    -webkit-print-color-adjust: exact;
+    content: '\a0';
+    flex-grow: 1;
+    height: 1px;
+    position: relative;
+    top: 0.7em;
+}
+
+h2:before {
+    margin-right:2rem;
+}
+
+h2:after {
+    margin-left:2rem;
+}
+
+/** Header */
+
+header {
+    text-align: center;
+    color: #5A5A5A;
+}
+
+header h1 {
+    margin-top: 0;
+    color: black;
+}
+
+header .avatar {
+    display: inline-block;
+    width: 1.5in;
+    height: 1.5in;
+    content: url(https://secure.gravatar.com/avatar/4ee50711327dbd504750720163a28cbf?s=144);
+    border-radius: 0.75in;
+}
+
+header ul {
+    list-style: none;
+    padding: 0;
+}
+
+header li {
+    display: inline-block;
+    padding: 0.5rem;
+}
+header a {
+    text-decoration: none;
+    color: #5a5a5a;
+}
+
+header a:hover {
+    color: #8a8a8a;
+}
+
+/** Education */
+
+.education .school {
+    position: relative;
+}
+.education span {
+    display: block;
+}
+
+.education .right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+}
+
+/** Skills and Interests */
+
+.skills-intersts {
+    page-break-after: always;
+    position: relative;
+}
+
+/** Work Experience */
+
+.experience div {
+    position: relative;
+}
+
+.experience .period {
+    margin-top: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.experience p {
+    margin-left: 2rem;
+    position: relative;
+}
+
+.experience .work:last-child .description {
+    margin-bottom: 0;
+}
