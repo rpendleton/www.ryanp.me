@@ -27,6 +27,13 @@ html, body {
         max-width: 6.5in;
         display: inline-block;
         text-align: left;
+        margin: 1rem;
+        padding: 1rem 1rem 1rem 1rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .container {
         margin: 2rem;
         padding: 0.5in 1in 1in 1in;
     }
@@ -129,15 +136,18 @@ header a:hover {
 .education .school {
     position: relative;
 }
+
 .education span {
     display: block;
 }
 
-.education .right {
-    position: absolute;
-    top: 0;
-    right: 0;
-    text-align: right;
+@media print, (min-width: 768px) {
+    .education .right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: right;
+    }
 }
 
 /** Skills and Interests */
@@ -153,16 +163,23 @@ header a:hover {
     position: relative;
 }
 
-.experience .period {
-    margin-top: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+.experience p.period {
+    display: none;
 }
 
 .experience p {
-    margin-left: 2rem;
     position: relative;
+    margin-left: 2rem;
+}
+
+@media print, (min-width: 768px) {
+    .experience p.period {
+        position: absolute;
+        display: initial;
+        margin-top: 0;
+        right: 0;
+        top: 0;
+    }
 }
 
 .experience .work:last-child .description {
