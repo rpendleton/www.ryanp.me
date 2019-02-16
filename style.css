@@ -138,6 +138,15 @@ header h1 {
     color: black;
 }
 
+header a {
+    text-decoration: none;
+    color: #5a5a5a;
+}
+
+header a:hover {
+    color: #8a8a8a;
+}
+
 header .avatar {
     display: inline-block;
     width: 1.5in;
@@ -149,26 +158,15 @@ header .avatar {
 header ul {
     list-style: none;
     padding: 0;
+    margin-bottom: -1.25rem;
 }
 
 header li {
     display: inline-block;
     padding: 0.5rem;
 }
-header a {
-    text-decoration: none;
-    color: #5a5a5a;
-}
 
-header a:hover {
-    color: #8a8a8a;
-}
-
-header .icons {
-    margin-bottom: -1.25rem;
-}
-
-header .icons a {
+header li a {
     display: inline-block;
     border-radius: 50%;
     width: 3rem;
@@ -179,7 +177,7 @@ header .icons a {
     color: #5A5A5A;
 }
 
-header .icons a:hover {
+header li a:hover {
     background-color: #eaeaea;
     color: black;
 }
