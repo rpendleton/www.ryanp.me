@@ -7,9 +7,11 @@ const gulp = require('gulp');
 const $ = require('gulp-load-plugins')({
     pattern: [
         'gulp-*',
+        'concurrent-transform',
         'del',
     ],
     rename: {
+        'concurrent-transform': 'concurrent',
     }
 });
 
@@ -117,7 +119,7 @@ gulp.task('publish:s3', () => {
                 '^.+$': {}
             }
         }))
-        .pipe(publisher.publish())
+        .pipe($.concurrent(publisher.publish(), 4))
         .pipe(publisher.cache())
         .pipe(publisher.sync("www.ryanp.me"))
         .pipe($.awspublish.reporter());
