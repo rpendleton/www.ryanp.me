@@ -1,0 +1,24 @@
+{
+  "name": "resume-ci",
+  "version": "1.0.0",
+  "description": "deployment script for my resume",
+  "author": "Ryan Pendleton <me@ryanp.me>",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "autoprefixer": "^9.4.7",
+    "cssnano": "^4.1.10",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-awspublish": "^4.0.0",
+    "gulp-awspublish-router": "^0.2.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-rev-all": "^1.0.0",
+    "gulp-sourcemaps": "^2.6.4"
+  }
+}
