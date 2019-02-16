@@ -8,12 +8,8 @@ const $ = require('gulp-load-plugins')({
     pattern: [
         'gulp-*',
         'del',
-        'sort-keys',
-        'through2',
     ],
     rename: {
-        'sort-keys': 'sortKeys',
-        'through2': 'through',
     }
 });
 
