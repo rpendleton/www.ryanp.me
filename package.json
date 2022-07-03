@@ -6,20 +6,21 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "autoprefixer": "^9.4.7",
+    "autoprefixer": "^10.4.7",
     "concurrent-transform": "^1.0.0",
-    "cssnano": "^4.1.10",
-    "del": "^3.0.0",
-    "gulp": "^4.0.0",
-    "gulp-awspublish": "^4.0.0",
+    "cssnano": "^5.1.12",
+    "del": "^6.1.1",
+    "gulp": "^4.0.2",
+    "gulp-awspublish": "^6.0.2",
     "gulp-awspublish-router": "^0.2.0",
     "gulp-htmlmin": "^5.0.1",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-notify": "^3.2.0",
+    "gulp-load-plugins": "^2.0.7",
+    "gulp-notify": "^4.0.0",
     "gulp-plumber": "^1.2.1",
-    "gulp-postcss": "^8.0.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-rev-all": "^1.0.0",
-    "gulp-sourcemaps": "^2.6.4"
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-rev-all": "^3.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "postcss": "^8.4.14"
   }
 }
