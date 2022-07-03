@@ -1,4 +1,5 @@
 /.ci/awspublish-*
 /.ci/build
 /.ci/dist
+/.env.local
 /node_modules

@@ -10,6 +10,7 @@
     "concurrent-transform": "^1.0.0",
     "cssnano": "^5.1.12",
     "del": "^6.1.1",
+    "dotenv": "^16.0.1",
     "gulp": "^4.0.2",
     "gulp-awspublish": "^6.0.2",
     "gulp-awspublish-router": "^0.2.0",

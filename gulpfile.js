@@ -1,5 +1,10 @@
 'use strict';
 
+//! load any environment variables specified in .env
+const dotenv = require('dotenv');
+dotenv.config({ path: '.env.local' })
+dotenv.config({ path: '.env' })
+
 //! NPM modules, gulp and plugins
 
 const gulp = require('gulp');
@@ -94,21 +99,24 @@ gulp.task('dist:cdn', () => {
 gulp.task('dist', gulp.series('clean', 'minify', 'dist:cdn'));
 
 gulp.task('publish:s3', () => {
+    const bucket = determinePublishBucket();
+    const prefix = determinePublishPrefix();
+
     const publisher = $.awspublish.create(
         {
             region: 'us-west-2',
             params: {
-                Bucket: 'personal.ryanp.me'
+                Bucket: bucket
             }
         },
         {
-            cacheFileName: '.ci/awspublish-personal.ryanp.me.json',
+            cacheFileName: `.ci/awspublish-${bucket}.json`,
         }
     );
 
     return gulp.src('**', { cwd: '.ci/dist' })
         .pipe($.rename(path => {
-            path.dirname = 'www.ryanp.me/' + path.dirname;
+            path.dirname = prefix + path.dirname;
         }))
         .pipe($.awspublishRouter({
             routes: {
@@ -125,8 +133,31 @@ gulp.task('publish:s3', () => {
         }))
         .pipe($.concurrent(publisher.publish(), 4))
         .pipe(publisher.cache())
-        .pipe(publisher.sync("www.ryanp.me"))
+        .pipe(publisher.sync(prefix))
         .pipe($.awspublish.reporter());
+
+    function determinePublishBucket() {
+        const bucket = process.env['S3_PUBLISH_BUCKET'];
+        if (!bucket) {
+            throw 'Missing S3_PUBLISH_BUCKET.';
+        }
+
+        return bucket;
+    }
+
+    function determinePublishPrefix() {
+        const prefix = process.env['S3_PUBLISH_PREFIX'];
+        if (!prefix) {
+            throw "Missing S3_PUBLISH_PREFIX. If you really want to publish to the root of a bucket, specify '/'.";
+        }
+
+        if (prefix.endsWith('/')) {
+            return prefix;
+        }
+        else {
+            return prefix + '/';
+        }
+    }
 });
 
 gulp.task('publish', gulp.series('dist', 'publish:s3'));
