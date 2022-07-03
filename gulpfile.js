@@ -99,12 +99,13 @@ gulp.task('dist:cdn', () => {
 gulp.task('dist', gulp.series('clean', 'minify', 'dist:cdn'));
 
 gulp.task('publish:s3', () => {
+    const region = determinePublishRegion();
     const bucket = determinePublishBucket();
     const prefix = determinePublishPrefix();
 
     const publisher = $.awspublish.create(
         {
-            region: 'us-west-2',
+            region: region,
             params: {
                 Bucket: bucket
             }
@@ -135,6 +136,15 @@ gulp.task('publish:s3', () => {
         .pipe(publisher.cache())
         .pipe(publisher.sync(prefix))
         .pipe($.awspublish.reporter());
+
+    function determinePublishRegion() {
+        const region = process.env['S3_PUBLISH_REGION'];
+        if (!region) {
+            throw 'Missing S3_PUBLISH_REGION.';
+        }
+
+        return region;
+    }
 
     function determinePublishBucket() {
         const bucket = process.env['S3_PUBLISH_BUCKET'];
