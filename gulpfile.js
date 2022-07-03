@@ -1,5 +1,4 @@
 'use strict';
-require('process').chdir('..');
 
 //! NPM modules, gulp and plugins
 
@@ -35,7 +34,7 @@ gulp.task('clean', gulp.parallel('clean:build', 'clean:dist'));
 //! Minification
 
 gulp.task('minify:css', () => {
-    return gulp.src('css/**/*.css', )
+    return gulp.src('src/css/**/*.css', )
         .pipe($.plumber(onError))
         .pipe($.sourcemaps.init())
         .pipe($.postcss([
@@ -47,7 +46,7 @@ gulp.task('minify:css', () => {
 });
 
 gulp.task('minify:html', () => {
-    return gulp.src('*.html')
+    return gulp.src('src/*.html')
         .pipe($.plumber(onError))
         .pipe($.htmlmin({
             collapseWhitespace: true,
@@ -61,9 +60,9 @@ gulp.task('minify:html', () => {
 
 gulp.task('minify:static', () => {
     const assets = gulp.src([
-        '**',
-        '!css/**/*.css',
-        '!*.html',
+        'src/**',
+        '!src/css/**/*.css',
+        '!src/*.html',
     ]);
 
     return assets.pipe(gulp.dest('.ci/build'));
@@ -95,12 +94,17 @@ gulp.task('dist:cdn', () => {
 gulp.task('dist', gulp.series('clean', 'minify', 'dist:cdn'));
 
 gulp.task('publish:s3', () => {
-    const publisher = $.awspublish.create({
-        region: 'us-west-2',
-        params: {
-            Bucket: 'personal.ryanp.me'
+    const publisher = $.awspublish.create(
+        {
+            region: 'us-west-2',
+            params: {
+                Bucket: 'personal.ryanp.me'
+            }
+        },
+        {
+            cacheFileName: '.ci/awspublish-personal.ryanp.me.json',
         }
-    });
+    );
 
     return gulp.src('**', { cwd: '.ci/dist' })
         .pipe($.rename(path => {

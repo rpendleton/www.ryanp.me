@@ -1,4 +1,4 @@
-.awspublish-*
-.ci/build
-.ci/dist
-.ci/node_modules
+/.ci/awspublish-*
+/.ci/build
+/.ci/dist
+/node_modules
