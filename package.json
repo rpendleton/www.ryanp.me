@@ -1,7 +1,7 @@
 {
-  "name": "resume-ci",
+  "name": "rpendleton-www.ryanp.me",
   "version": "1.0.0",
-  "description": "deployment script for my resume",
+  "description": "build and deployment scripts for my personal website",
   "author": "Ryan Pendleton <me@ryanp.me>",
   "license": "UNLICENSED",
   "private": true,
