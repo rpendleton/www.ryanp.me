@@ -133,7 +133,7 @@ header .avatar {
     display: inline-block;
     width: 1.5in;
     height: 1.5in;
-    content: url(https://secure.gravatar.com/avatar/4ee50711327dbd504750720163a28cbf?s=144);
+    content: url(https://secure.gravatar.com/avatar/4ee50711327dbd504750720163a28cbf?s=512);
     border-radius: 0.75in;
 }
 
